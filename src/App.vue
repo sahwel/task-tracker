@@ -36,8 +36,12 @@ export default {
       const defMonth = newTaskDatas.created.getMonth() +1 
       const  month=  defMonth < 11 ? '0' + defMonth : defMonth; 
       const createDate = newTaskDatas.created.getFullYear() + '-'  + month + '-' + newTaskDatas.created.getDate();
+      let id = 1;
+      if(this.tasks.length > 0){
+        this.tasks[this.tasks.length - 1].id + 1;
+      }
       const newTask = {
-        id: this.tasks[this.tasks.length - 1].id + 1,
+        id: id,
         name: newTaskDatas.name,
         description: newTaskDatas.description,
         created: createDate,
