@@ -36,12 +36,12 @@ export default {
       const defMonth = newTaskDatas.created.getMonth() +1 
       const  month=  defMonth < 11 ? '0' + defMonth : defMonth; 
       const createDate = newTaskDatas.created.getFullYear() + '-'  + month + '-' + newTaskDatas.created.getDate();
-      let id = 1;
-      if(this.tasks.length > 0){
-        this.tasks[this.tasks.length - 1].id + 1;
+      let idd = 1;
+      if( this.tasks.length !== 0 ){
+        idd =  this.tasks[this.tasks.length - 1].id + 1
       }
       const newTask = {
-        id: id,
+        id: idd,
         name: newTaskDatas.name,
         description: newTaskDatas.description,
         created: createDate,
@@ -65,14 +65,7 @@ export default {
   },
   created(){
     this.tasks = [
-      {
-        id: 1,
-        name: 'This is a test',
-        description:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi iaculis pellentesque arcu, sit amet elementum ipsum sodales laoreet. Fusce feugiat eget velit ac sollicitudin. Fusce nec augue nulla. Nulla ullamcorper!',
-        created: '2021-11-11',
-        inProgress: false,
-        completed: false
-      }
+     
     ];
      this.tasks = this.tasks.filter((task) => task.completed === false);
   },
