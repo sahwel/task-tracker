@@ -27,7 +27,11 @@ export default {
 
 
 
+
 p{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    user-select:none;
     margin: 0 auto;
     margin-left: 0;
 }

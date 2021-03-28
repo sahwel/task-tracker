@@ -1,10 +1,9 @@
 <template>
-    <div class="conatiner"> 
-    
-    <NavComponent class="NavComponent" name="Not completed tasks" :howMuch="nonCompletedTasksSize" /> 
-    <NavComponent class="NavComponent" name="In progress" :howMuch="inProgressTasksSize" />
-    <NavComponent class="NavComponent" name="Not in progress" :howMuch="notInProgressTasksSize" />
-    <NavComponent class="NavComponent" name="Completed" :howMuch="completedTasksSize" />
+    <div class="container"> 
+    <NavComponent @Click="$emit('not-completed')" class="NavComponent" name="Not completed tasks" :howMuch="nonCompletedTasksSize" /> 
+    <NavComponent @Click="$emit('in-progress')" class="NavComponent" name="In progress" :howMuch="inProgressTasksSize" />
+    <NavComponent @Click="$emit('not-in-progress')" class="NavComponent" name="Not in progress" :howMuch="notInProgressTasksSize" />
+    <NavComponent @Click="$emit('completed')" class="NavComponent" name="Completed" :howMuch="completedTasksSize" />
     </div>
 </template>
 
@@ -38,8 +37,6 @@ export default {
 </script>
 
 <style scoped>
-.conatiner {
-}
 
 .NavComponent{
   width: 80%;

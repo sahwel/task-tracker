@@ -8,7 +8,7 @@
         <div class="d-text">
         {{task.description}}
              </div>
-        <div class="icons">
+        <div :class="task.completed ? 'nonIcons' : 'icons'" >
             <img @click="$emit('changeProgress', task.id)" :src="task.inProgress ? stop : start ">
             <img @click="$emit('changeCompleted', task.id)" src="@/assets/pipa.png">
         </div>
@@ -21,7 +21,7 @@
 export default {
   name: 'Task',
   props: {
-    task: Object,
+    task: Object
   },
   data(){
       return{
@@ -29,6 +29,8 @@ export default {
       start: require('@/assets/start.png'),
       stop: require('@/assets/stop.png'),
       }
+  },
+  created(){
   }
 }
 </script>
@@ -63,10 +65,14 @@ export default {
 }
 
 .icons{
-    
     justify-self: end;
     align-self: end;
 }
+
+.nonIcons{
+    display: none
+}
+
 .icons > img {
     padding: 0 0.2em;
     width: 1.5em;

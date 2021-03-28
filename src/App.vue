@@ -1,6 +1,6 @@
 <template>
-  <SideBar :key="sideBar" :tasks="tasks" class="SideBar"/>
-  <TaskContainer :key="TaskContainer"  @add-task="addTask"  @change-completed="changeCompleted" @change-progress="changePprogress" :tasks="tasks" class="taskContainer"/>
+  <SideBar @not-completed="notCompleted"  @completed="completed"  @not-in-progress="notInProgress"  @in-progress="isInProgress"  ref="sideBar" :key="sideBar" :tasks="tasks" class="SideBar"/>
+  <TaskContainer  ref="taskc" :key="TaskContainer"  @add-task="addTask"  @change-completed="changeCompleted" @change-progress="changePprogress" :tasks="tasks" class="taskContainer"/>
 </template>
 
 <script>
@@ -15,10 +15,23 @@ export default {
   },
   data(){
     return {
-      tasks: []
+      tasks: [],
     }
   },
   methods:{
+    
+    notCompleted(){
+        this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
+    },
+    completed(){
+       this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === true));
+    },
+    isInProgress(){
+      this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.inProgress === true));
+    },
+    notInProgress(){
+      this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.inProgress === false).filter((task) => task.completed !== true));
+    },
     addTask(newTaskDatas){
       const defMonth = newTaskDatas.created.getMonth() +1 
       const  month=  defMonth < 11 ? '0' + defMonth : defMonth; 
@@ -31,18 +44,19 @@ export default {
         inProgress: false,
         completed: false
       }
-
       this.tasks = [...this.tasks ,newTask];
-      console.log(newTask)
-      this.TaskContainer += 1;
+      this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
     },
     changeCompleted(id){
       this.tasks = this.tasks.map((task) => task.id === id ? {...task, completed: !task.completed} : task);
-      this.sideBar += 1;
+      this.tasks = this.tasks.map((task) => task.id === id ? {...task, inProgress: false} : task);
+      this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
+      this.$refs.sideBar.reRender();
     },
     changePprogress(id){
       this.tasks = this.tasks.map((task) => task.id === id ? {...task, inProgress: !task.inProgress} : task);
-      this.sideBar += 1;
+      this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
+      this.$refs.sideBar.reRender();
     }
   },
   created(){
@@ -52,14 +66,14 @@ export default {
         name: 'This is a test',
         description:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi iaculis pellentesque arcu, sit amet elementum ipsum sodales laoreet. Fusce feugiat eget velit ac sollicitudin. Fusce nec augue nulla. Nulla ullamcorper!',
         created: '2021-11-11',
-        inProgress: true,
+        inProgress: false,
         completed: false
       }
-    ]
-    
+    ];
+     this.tasks = this.tasks.filter((task) => task.completed === false);
   },
   
-  emits:['change-completed', 'change-progress', 'add-task']
+  emits:['change-completed', 'change-progress', 'add-task', 'not-completed', 'in-progress', 'not-in-progress', 'completed']
 }
 </script>
 

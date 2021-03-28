@@ -1,10 +1,10 @@
 <template>
     <div class="conatiner"> 
       <div class="addTaskCont"> 
-       <AddTask @add-task="asd" class="addTask"/>
+       <AddTask @add-task="addTask" class="addTask"/>
       </div >
       <div class="tasks">
-      <Tasks @changeCompleted="changeCompleted" @changeProgress="changeProgress" :tasks="nonCompletedTasks" />
+      <Tasks ref="tasks" @changeCompleted="changeCompleted" @changeProgress="changeProgress" :tasks="tasksToGive" />
       </div>
     </div>
 </template>
@@ -20,29 +20,33 @@ export default {
    Tasks
   },
   data(){
-    return {
-      nonCompletedTasks: []
+    return{
+      tasksToGive: []
     }
   },
   props:{
       tasks: Array,
   },
   methods: {
-    asd(newTaskDatas){
-      console.log(newTaskDatas)
+
+    addTask(newTaskDatas){
       this.$emit('add-task', newTaskDatas)
     },
     changeCompleted(id){
-      this.nonCompletedTasks = this.nonCompletedTasks.filter((task) => task.id !== id )
+      this.tasksToGive = this.tasks.filter((task) => task.id !== id )
       this.$emit('change-completed', id);
     },
      changeProgress(id){
-      this.nonCompletedTasks = this.nonCompletedTasks.map((task) => task.id === id ? {...task, inProgress: !task.inProgress} : task)
+      this.tasksToGive = this.tasks.map((task) => task.id === id ? {...task, inProgress: !task.inProgress} : task)
       this.$emit('change-progress', id);
+    },
+    setTaskToGive(tasks){
+      this.tasksToGive = tasks;
+      tasks += 1;
     }
   },
-  created(){
-    this.nonCompletedTasks = this.tasks.filter((task) => task.completed === false);
+  created() {
+    this.tasksToGive = this.tasks;
   },
   emits:['changeCompleted', 'changeProgress', 'add-task']
   }

@@ -82,7 +82,7 @@ export default {
   max-width: 100%;
 }
 
-textarea{
+textarea{ resize: none;
     background: #D8D8D8;
     border: 0;
     border-radius:15px;
