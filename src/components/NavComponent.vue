@@ -26,8 +26,6 @@ export default {
 }
 
 
-
-
 p{
     -webkit-user-select:none;
     -moz-user-select:none;
@@ -48,10 +46,15 @@ p{
 }
 
 @media screen and (max-width: 1300px) {
-  
-  .howMuch{
+    .conatiner {
+    display: grid;
+    padding: 0.5em;
+    grid-template-columns: 90% 10%;
+    border-bottom: 1px solid black;
+    }
+    .howMuch{
       display: none;
-  }
+    }
 }
 
 </style>

@@ -42,4 +42,15 @@ export default {
   width: 80%;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 1300px) {
+   .NavComponent{
+  width: 100%;
+}
+
+.NavComponent:first-child{
+    
+    border-top: 1px solid black;
+}
+}
 </style>

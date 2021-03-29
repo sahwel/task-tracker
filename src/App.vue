@@ -99,7 +99,7 @@ html, body{
 
 @media screen and (max-width: 992px) {
   #app {
- display: grid;
+  display: grid;
   grid-template-columns: 1fr;
  }
  .SideBar{
