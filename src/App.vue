@@ -53,8 +53,7 @@ export default {
       })
 
       const data = await res.json()
-      console.log(data)
-      this.tasks = [...this.tasks, data];
+      this.tasks = await this.fetchTasks();
       this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
     },
     async changeCompleted(id){
@@ -66,8 +65,7 @@ export default {
         }
       })
 
-      this.tasks = this.tasks.map((task) => task._id === id ? {...task, completed: !task.completed} : task);
-      this.tasks = this.tasks.map((task) => task._id === id ? {...task, inProgress: false} : task);
+    this.tasks = await this.fetchTasks();
       this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
       this.$refs.sideBar.reRender();
     },
@@ -80,7 +78,7 @@ export default {
         }
       })
 
-      this.tasks = this.tasks.map((task) => task._id === id ? {...task, inProgress: !task.inProgress} : task);
+    this.tasks = await this.fetchTasks();
       this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
       this.$refs.sideBar.reRender();
     },
