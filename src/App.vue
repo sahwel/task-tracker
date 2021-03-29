@@ -33,7 +33,6 @@ export default {
       this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.inProgress === false).filter((task) => task.completed !== true));
     },
     async addTask(newTaskDatas){
-      console.log('asd')
       const defMonth = newTaskDatas.created.getMonth() +1 
       const  month=  defMonth < 11 ? '0' + defMonth : defMonth; 
       const createDate = newTaskDatas.created.getFullYear() + '-'  + month + '-' + newTaskDatas.created.getDate();
@@ -70,7 +69,6 @@ export default {
       this.$refs.sideBar.reRender();
     },
     async changeProgress(id){
-      console.log(id)
       await fetch('http://localhost:3001/tasks/chanegProgress/' + id, {
         method: 'PATCH',
         headers: {
