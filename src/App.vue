@@ -64,7 +64,7 @@ export default {
         }
       })
 
-    this.tasks = await this.fetchTasks();
+      this.tasks = await this.fetchTasks();
       this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
       this.$refs.sideBar.reRender();
     },
@@ -76,8 +76,8 @@ export default {
         }
       })
 
-    this.tasks = await this.fetchTasks();
-      this.$refs.taskc.setTaskToGive(this.tasks.filter((task) => task.completed === false));
+      const taskss = await this.fetchTasks();
+      this.$refs.taskc.setTaskToGive(taskss.filter((task) => task.completed === false));
       this.$refs.sideBar.reRender();
     },
     async fetchTasks() {

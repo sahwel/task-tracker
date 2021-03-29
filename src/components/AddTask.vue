@@ -39,12 +39,12 @@ export default {
           return;
         }
 
-        if(this.taskName.length < 4){
+        if(this.taskName.length < 3){
           alert('Task name  must need to be at least 3 character!');
           return;
         } 
 
-        if(this.description.length < 4){
+        if(this.description.length < 3){
           alert('Task description must need to be at least 3 character!');
           return;
         }
