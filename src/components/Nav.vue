@@ -43,14 +43,17 @@ export default {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1300px) {
-   .NavComponent{
+@media screen and (max-width: 992px) {
+    .NavComponent{
   width: 100%;
 }
 
 .NavComponent:first-child{
     
-    border-top: 1px solid black;
+    border-top: 1px solid black;}
 }
-}
+
+
+
+
 </style>
