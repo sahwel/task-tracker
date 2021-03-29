@@ -60,7 +60,7 @@ export default {
 .description{
     padding: 1em;
     grid-template-columns: 5fr 1fr;
-    grid-auto-rows: minmax(4em, 4em);
+    grid-auto-rows: minmax(4em, auto);
     grid-auto-columns: minmax(1fr, 3fr);
 }
 
@@ -86,4 +86,57 @@ export default {
   word-break: break-all;
 }
 
+
+@media screen and (max-width: 992px) {
+    .header{
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid black;
+    }
+
+    .header > h3:first-child{
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+
+    .header > h3{
+        margin: 0.5em;
+    }
+
+    .description{
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(4em, auto);
+    grid-auto-columns: minmax(1fr, 3fr);
+    }
+
+    .icons > img {
+        padding: 0 0 1em 0;
+    }
+
+    .icons > img:last-child {
+        padding: 1em;
+        width: 1.5em;
+    }
+
+    .d-text{ 
+        padding: 0.5em;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+  
+    .header{
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid black;
+    }
+
+    .header > h3:first-child{
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+
+    .header > h3{
+        margin: 0.5em;
+    
+  }
+}
 </style>

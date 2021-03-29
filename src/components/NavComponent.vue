@@ -47,4 +47,11 @@ p{
     text-align: center;;
 }
 
+@media screen and (max-width: 1300px) {
+  
+  .howMuch{
+      display: none;
+  }
+}
+
 </style>

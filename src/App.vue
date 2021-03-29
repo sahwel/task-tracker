@@ -91,8 +91,20 @@ html, body{
   height: 100vh;
 }
 
+
 .taskContainer{
   height: 100vh;
 }
 
+
+@media screen and (max-width: 992px) {
+  #app {
+ display: grid;
+  grid-template-columns: 1fr;
+ }
+ .SideBar{
+  height: auto;
+}
+
+}
 </style>

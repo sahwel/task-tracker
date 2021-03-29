@@ -1,8 +1,11 @@
 <template>
     <div class="container"> 
-    <ProfileInNav class="profile" username="metramyt"/> 
-    <Nav  @not-completed="$emit('not-completed')" @in-progress="$emit('in-progress')"  @not-in-progress="$emit('not-in-progress')"   @completed="$emit('completed')"  :key="navkey" :tasks="tasks" />
-    <Logout class="logout" />
+      <img class="hamburger" src="@/assets/hamburger-menu.png">
+      <div class="desktop">
+        <ProfileInNav class="profile" username="metramyt"/> 
+        <Nav  @not-completed="$emit('not-completed')" @in-progress="$emit('in-progress')"  @not-in-progress="$emit('not-in-progress')"   @completed="$emit('completed')"  :key="navkey" :tasks="tasks" />
+        <Logout class="logout" />
+      </div>
     </div>
 </template>
 
@@ -31,10 +34,23 @@ export default {
 </script>
 
 <style scoped>
-
+.hamburger{
+  display: none;
+}
 
 .logout{
     position: absolute;
     bottom: 0px;
+}
+
+@media screen and (max-width: 992px) {
+  .hamburger{
+  display: inline;
+  width: 1.5em;
+  padding: 0.5em;
+  }
+  .desktop{
+    display: none;
+  }
 }
 </style>

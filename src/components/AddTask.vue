@@ -94,6 +94,7 @@ textarea{ resize: none;
 
 
 input{
+    box-sizing: border-box;
     background: #D8D8D8;
     border: 0;
     border-radius:15px;
@@ -122,5 +123,18 @@ input{
     width: 7em;
     background: #797979;
     color: white;
+}
+
+
+@media screen and (max-width: 992px) {
+  
+  .header{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .btn{
+    grid-row: 1;
+  }
 }
 </style>
