@@ -33,11 +33,11 @@ export default {
       this.$emit('add-task', newTaskDatas)
     },
     changeCompleted(id){
-      this.tasksToGive = this.tasks.filter((task) => task.id !== id )
+      this.tasksToGive = this.tasks.filter((task) => task._id !== id )
       this.$emit('change-completed', id);
     },
      changeProgress(id){
-      this.tasksToGive = this.tasks.map((task) => task.id === id ? {...task, inProgress: !task.inProgress} : task)
+      this.tasksToGive = this.tasks.map((task) => task._id === id ? {...task, inProgress: !task.inProgress} : task)
       this.$emit('change-progress', id);
     },
     setTaskToGive(tasks){
@@ -74,6 +74,7 @@ export default {
 
 .tasks{
   overflow:auto;
+  padding-bottom: 2em;
 }
 
 

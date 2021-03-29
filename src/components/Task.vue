@@ -9,8 +9,8 @@
         {{task.description}}
              </div>
         <div :class="task.completed ? 'nonIcons' : 'icons'" >
-            <img @click="$emit('changeProgress', task.id)" :src="task.inProgress ? stop : start ">
-            <img @click="$emit('changeCompleted', task.id)" src="@/assets/pipa.png">
+            <img @click="$emit('changeProgress', task._id)" :src="task.inProgress ? stop : start ">
+            <img @click="$emit('changeCompleted', task._id)" src="@/assets/pipa.png">
         </div>
     </div>
 </div>

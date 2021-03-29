@@ -1,6 +1,6 @@
 <template>
-  <div :key="task.id"  v-for="task in tasks">
-    <Task @changeCompleted="$emit('changeCompleted', task.id)" @changeProgress="$emit('changeProgress', task.id)"  :task="task" />
+  <div :key="task._id"  v-for="task in tasks">
+    <Task @changeCompleted="$emit('changeCompleted', task._id)" @changeProgress="$emit('changeProgress', task._id)"  :task="task" />
   </div>
 </template>
 
