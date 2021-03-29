@@ -29,15 +29,26 @@ export default {
     onSubmit(e){
       e.preventDefault();
       
-      if(!this.taskName){
-        alert('Task must have a name!');
-        return;
-      }
+        if(!this.taskName){
+          alert('Task must have a name!');
+          return;
+        }
 
-      if(!this.description){
-        alert('Task must have a name!');
-        return;
-      }
+        if(!this.description){
+          alert('Task must have a description!');
+          return;
+        }
+
+        if(this.taskName.length < 4){
+          alert('Task name  must need to be at least 3 character!');
+          return;
+        } 
+
+        if(this.description.length < 4){
+          alert('Task description must need to be at least 3 character!');
+          return;
+        }
+      
 
       const newTaskDatas = {
         name: this.taskName,
